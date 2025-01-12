@@ -32,6 +32,9 @@ if "%commitMsg%"=="" set commitMsg=Auto commit: %date% %time%
 set /p commitMsg= 
 git commit -m "%commitMsg%"
 
+REM Rename the current branch to 'main'
+git branch -M main 
+
 REM Push changes to the remote repository
 git push -u origin main
 
