@@ -2,11 +2,11 @@ import React from "react";
 
 const Header = () => {
   const projects = [
-    { name: "Sudoku Solver", link: "https://sudoku.yourdomain.com" },
-    { name: "Weather App", link: "https://weather.yourdomain.com" },
-    { name: "Portfolio", link: "https://portfolio.yourdomain.com" },
-    { name: "E-commerce Store", link: "https://store.yourdomain.com" },
-    { name: "Chat App", link: "https://chat.yourdomain.com" },
+    { name: "Sudoku Solver", link: "https://advance-sudoku-game.vercel.app/" },
+    { name: "Weather App", link: "https://advance-weather-app-one.vercel.app/" },
+    { name: "Todo", link: "https://advance-todo-list-one.vercel.app/" },
+    { name: "Linked in", link: "https://www.linkedin.com/in/sagar-gondaliya/" },
+    { name: "GitHub", link: "https://github.com/Sagar610" },
   ];
 
   return (
