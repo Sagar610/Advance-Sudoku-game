@@ -6,7 +6,7 @@ const Timer = ({ time, setTime }) => {
     return () => clearInterval(interval);
   }, [setTime]);
 
-  return <div className="text-lg">Time: {time}s</div>;
+  return <div className="text-lg">Time: {time} s</div>;
 };
 
 export default Timer;

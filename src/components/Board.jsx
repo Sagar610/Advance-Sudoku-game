@@ -10,17 +10,21 @@ const Board = ({ board, setBoard }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-100 min-w-100 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600">
-      <div className="bg-gray-800 p-1 rounded-lg shadow-lg grid grid-cols-9 gap-1 w-full max-w-xl mx-auto">
+    <div className="flex items-center justify-center min-h-200 min-w-200">
+      <div className="bg-gray-300 p-1 rounded-none grid grid-cols-9 gap-0.5 w-full max-w-lg mx-auto">
         {board.map((row, rowIndex) =>
-          row.map((cell, colIndex) => (
-            <Cell
-              key={`${rowIndex}-${colIndex}`}
-              value={cell}
-              onChange={(value) => handleChange(rowIndex, colIndex, value)}
-              isHighlighted={rowIndex % 3 === 0 || colIndex % 3 === 0}
-            />
-          ))
+          row.map((cell, colIndex) => {
+            const isPreFilled = cell !== null; // Consider filled if it's not null
+            return (
+              <Cell
+                key={`${rowIndex}-${colIndex}`}
+                value={cell}
+                onChange={(value) => handleChange(rowIndex, colIndex, value)}
+                isHighlighted={rowIndex % 3 === 0 || colIndex % 3 === 0}
+                isPreFilled={isPreFilled}
+              />
+            );
+          })
         )}
       </div>
     </div>
