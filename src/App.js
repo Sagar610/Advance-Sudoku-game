@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Header from "./components/Header"; // Import the Header component
 import Board from "./components/Board";
 import Controls from "./components/Controls";
 import DifficultySelector from "./components/DifficultySelector";
@@ -28,16 +29,16 @@ const App = () => {
       setErrorMessage("This puzzle cannot be solved. Please try a different one.");
     }
   };
-// Reset the board to an empty state
+  // Reset the board to an empty state
   const generateEmptyBoard = () => {
     return Array.from({ length: 9 }, () => Array(9).fill(null));
   };
   const handleResetToEmpty = () => {
     setBoard(generateEmptyBoard());
-    
+
   };
 
-// Solve the Sudoku puzzle when the board changes
+  // Solve the Sudoku puzzle when the board changes
   useEffect(() => {
     setSolution(solveSudoku(board));
   }, [board]);
@@ -88,22 +89,25 @@ const App = () => {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col items-center p-2 ${getDifficultyColor()}`}>
-      <h2 className="text-4xl font-bold my-4">Sudoku Game & sudokuSolver</h2>
-      <DifficultySelector selected={difficulty}   onChange={handleDifficultyChange}/>
-      <Timer time={time} setTime={setTime} /><p className="text-xl text-gray-800">Hints Used: {hintsUsed} | Score : {score}</p>
-      <Board board={board} setBoard={setBoard} setSelectedCell={setSelectedCell} />
-      <Controls
-        onSolve={handleSolve}
-        onHint={handleHint}
-        handleResetToEmpty={handleResetToEmpty}
-        hintDisabled={gameOver || hintsUsed >= 3}  // Disable the hint button when the game is over or 3 hints have been used
-      />
-      <div className="mt-6">
-        {gameOver && <p className="text-red-600 text-xl font-bold mt-4">Game Over! You've used all your hints.</p>}
-        {errorMessage && <p className="text-red-600 text-xl font-bold mt-4">{errorMessage}</p>}
-      </div>
-    </div>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Add Header Component */}
+      <Header />
+      <div className={`min-h-screen flex flex-col items-center p-2 ${getDifficultyColor()}`}>
+        <h2 className="text-4xl font-bold my-4">Sudoku Game & sudokuSolver</h2>
+        <DifficultySelector selected={difficulty} onChange={handleDifficultyChange} />
+        <Timer time={time} setTime={setTime} /><p className="text-xl text-gray-800">Hints Used: {hintsUsed} | Score : {score}</p>
+        <Board board={board} setBoard={setBoard} setSelectedCell={setSelectedCell} />
+        <Controls
+          onSolve={handleSolve}
+          onHint={handleHint}
+          handleResetToEmpty={handleResetToEmpty}
+          hintDisabled={gameOver || hintsUsed >= 3}  // Disable the hint button when the game is over or 3 hints have been used
+        />
+        <div className="mt-6">
+          {gameOver && <p className="text-red-600 text-xl font-bold mt-4">Game Over! You've used all your hints.</p>}
+          {errorMessage && <p className="text-red-600 text-xl font-bold mt-4">{errorMessage}</p>}
+        </div>
+      </div></div>
   );
 };
 
