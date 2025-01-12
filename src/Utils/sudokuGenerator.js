@@ -1,7 +1,7 @@
 export const generateSudoku = (difficulty) => {
     const baseGrid = createCompletedGrid();
     const difficultyMap = {
-      easy: 36,
+      easy: 26,
       medium: 46,
       hard: 52,
       extreme: 58,
