@@ -1,12 +1,16 @@
 import React from "react";
 import Cell from "./Cell";
 
-const Board = ({ board, setBoard }) => {
+const Board = ({ board, setBoard, setSelectedCell }) => {
   const handleChange = (row, col, value) => {
     if (!/^[1-9]?$/.test(value)) return; // Only allow digits 1-9 or empty
     const newBoard = [...board];
     newBoard[row][col] = value ? parseInt(value) : null;
     setBoard(newBoard);
+  };
+
+  const handleCellClick = (row, col) => {
+    setSelectedCell({ row, col }); // Set the selected cell when a cell is clicked
   };
 
   return (
@@ -22,6 +26,7 @@ const Board = ({ board, setBoard }) => {
                 onChange={(value) => handleChange(rowIndex, colIndex, value)}
                 isHighlighted={rowIndex % 3 === 0 || colIndex % 3 === 0}
                 isPreFilled={isPreFilled}
+                onClick={() => handleCellClick(rowIndex, colIndex)}  // Handle cell click
               />
             );
           })

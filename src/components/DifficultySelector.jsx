@@ -2,12 +2,13 @@ import React from "react";
 
 const DifficultySelector = ({ onChange, selected }) => {
   const difficulties = ["easy", "medium", "hard", "extreme"];
+  
 
   return (
     <div className="flex space-x-2 mb-4">
       {difficulties.map((level) => (
         <button
-          key={level}
+          value={level}
           onClick={() => onChange(level)}
           className={`px-4 py-2 rounded ${
             (selected === level)

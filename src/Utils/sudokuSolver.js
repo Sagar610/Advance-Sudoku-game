@@ -6,7 +6,7 @@ export const solveSudoku = (board) => {
   
   const solve = (grid) => {
     const emptyCell = findEmpty(grid);
-    if (!emptyCell) return true; // No empty cells, puzzle solved
+    if (!emptyCell) return true;
   
     const [row, col] = emptyCell;
     for (let num = 1; num <= 9; num++) {
