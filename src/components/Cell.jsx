@@ -19,7 +19,7 @@ const Cell = ({ value, onChange, isHighlighted, isPreFilled, onClick }) => {
         className={`w-full h-full text-center bg-gray-600 text-gray-100 ${
           isPreFilled ? "text-gray-100 bg-blue-600" : ""
         }`}
-        disabled={isPreFilled} // Disable editing for pre-filled cells
+        // disabled={isPreFilled} // Disable editing for pre-filled cells
       />
     </div>
   );

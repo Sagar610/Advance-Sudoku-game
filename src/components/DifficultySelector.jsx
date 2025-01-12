@@ -8,11 +8,11 @@ const DifficultySelector = ({ onChange, selected }) => {
     <div className="flex space-x-2 mb-4">
       {difficulties.map((level) => (
         <button
-          value={level}
+          key={level}
           onClick={() => onChange(level)}
-          className={`px-4 py-2 rounded ${
-            (selected === level)
-              ? "bg-blue-500 text-white"
+          className={`px-4 py-2 rounded-full ${
+            selected === level
+              ?  "text-white bg-gray-800"
               : "bg-gray-200 text-gray-700"
           }`}
         >

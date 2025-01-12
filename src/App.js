@@ -28,8 +28,16 @@ const App = () => {
       setErrorMessage("This puzzle cannot be solved. Please try a different one.");
     }
   };
-  
+// Reset the board to an empty state
+  const generateEmptyBoard = () => {
+    return Array.from({ length: 9 }, () => Array(9).fill(null));
+  };
+  const handleResetToEmpty = () => {
+    setBoard(generateEmptyBoard());
+    
+  };
 
+// Solve the Sudoku puzzle when the board changes
   useEffect(() => {
     setSolution(solveSudoku(board));
   }, [board]);
@@ -48,7 +56,7 @@ const App = () => {
         newBoard[row][col] = hintValue;
         setBoard(newBoard);
         setHintsUsed(hintsUsed + 1);
-        setScore(score - 50); // Reduce score for using a hint
+        setScore(score - 300); // Reduce score for using a hint
 
         if (hintsUsed + 1 >= 4) {
           setGameOver(true);  // End game when the 3rd hint is used
@@ -81,19 +89,17 @@ const App = () => {
 
   return (
     <div className={`min-h-screen flex flex-col items-center p-2 ${getDifficultyColor()}`}>
-      <h1 className="text-4xl font-bold my-4">Sudoku Game</h1> 
-      
-      <DifficultySelector onChange={handleDifficultyChange} />
-      <Timer time={time} setTime={setTime} />
+      <h2 className="text-4xl font-bold my-4">Sudoku Game & sudokuSolver</h2>
+      <DifficultySelector selected={difficulty}   onChange={handleDifficultyChange}/>
+      <Timer time={time} setTime={setTime} /><p className="text-xl text-gray-800">Hints Used: {hintsUsed} | Score : {score}</p>
       <Board board={board} setBoard={setBoard} setSelectedCell={setSelectedCell} />
-      <Controls 
-        onSolve={handleSolve} 
-        onHint={handleHint} 
+      <Controls
+        onSolve={handleSolve}
+        onHint={handleHint}
+        handleResetToEmpty={handleResetToEmpty}
         hintDisabled={gameOver || hintsUsed >= 3}  // Disable the hint button when the game is over or 3 hints have been used
       />
-      <div className="mt-4">
-        <p className="text-lg font-semibold">Score: {score}</p>
-        <p className="text-sm text-gray-600">Hints Used: {hintsUsed}</p>
+      <div className="mt-6">
         {gameOver && <p className="text-red-600 text-xl font-bold mt-4">Game Over! You've used all your hints.</p>}
         {errorMessage && <p className="text-red-600 text-xl font-bold mt-4">{errorMessage}</p>}
       </div>
