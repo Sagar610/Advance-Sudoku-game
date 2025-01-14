@@ -1,6 +1,6 @@
 import React from "react";
 import Cell from "./Cell";
-
+// to create board this function is used.
 const Board = ({ board, setBoard, setSelectedCell }) => {
   const handleChange = (row, col, value) => {
     if (!/^[1-9]?$/.test(value)) return; // Only allow digits 1-9 or empty
