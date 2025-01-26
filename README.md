@@ -1,7 +1,7 @@
 Here's a `README.md` file for your Sudoku game project:
 
 # Sudoku Game
-
+## Play : https://advance-sudoku-game.vercel.app/
 A Sudoku game built with React, Tailwind CSS, and JavaScript. This game includes dynamic difficulty selection, timer, error handling, and win conditions. The player is given three chances to make a mistake before the game ends.
 
 ## Features
