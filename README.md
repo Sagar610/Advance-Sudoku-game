@@ -1,6 +1,5 @@
 Here's a `README.md` file for your Sudoku game project:
 
-```markdown
 # Sudoku Game
 
 A Sudoku game built with React, Tailwind CSS, and JavaScript. This game includes dynamic difficulty selection, timer, error handling, and win conditions. The player is given three chances to make a mistake before the game ends.
@@ -95,7 +94,6 @@ This project is licensed under the MIT License.
 
 - Special thanks to [Tailwind CSS](https://tailwindcss.com/) for the easy-to-use styling framework.
 - Thanks to [React](https://reactjs.org/) for enabling efficient UI rendering.
-```
 
 ### Key Sections in the README:
 1. **Project Overview**: Brief description of the game and its features.
